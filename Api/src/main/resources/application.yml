@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:45533/JwtTest
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+    dbcp2:
+      test-while-idle: true
+      validation-query: select 1
+    hikari:
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      auto-commit: false
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+    hibernate:
+#      ddl-auto: create #On in test
+      ddl-auto: update
+    properties:
+      hibernate:
+        connection:
+          provider_disables_autocommit: true
+          driver_class: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 8443
